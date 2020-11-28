@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <!--Blogs-->
+    <div class="container mx-5 px-4 my-2">
+        <div class="row">
+            <div class="col-sm-9">
+            <div class="mx-4 mb-2">
+                <strong>You can share your experience.</strong><br>
+                <p>by leaving a comment! <a href="{% url 'post-create' %}" class="text-success">post here</a></p>
+            </div>
+            {% for post in posts %}
+                <article class="media content-section my-1" style="background-color: rgb(161, 226, 161);">
+                    <a class="text-decoration-none text-dark" href="#"><img src="{{ post.author.profile.image.url }}" class="img-fluid p-1" style="height:60px;width:60px;border-radius: 100px;object-fit: cover;"></a>
+                    <div class="media-body pl-3">
+                        <strong><a class="text-decoration-none text-dark" href="#">{{post.author.username}}</a></strong> on 
+                        <small>{{post.date_posted|date:'F d ,Y'}}</small>
+                        <h5><a class="text-decoration-none text-dark" href="{% url 'post-detail' post.id %}">{{post.title}}</a></h5>
+                        <article>{{post.content}}</article>
+                    </div>
+                </article>
+            {% endfor %}
+            </div>
+            <div class="col-sm-3">
+                <h5>Notifications</h5>
+                <p>Subham added a photo</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

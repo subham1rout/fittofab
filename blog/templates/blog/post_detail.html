@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <!--Blog Detail-->
+    <div class="container mx-5 px-4 my-2">
+        <article class="media content-section my-1" style="background-color: rgb(161, 226, 161);">
+            <a class="text-decoration-none text-dark" href="#"><img src="{{ object.author.profile.image.url }}" class="img-fluid p-1" style="height:60px;width:60px;border-radius: 100px;object-fit: cover;"></a>
+            <div class="media-body pl-3">
+                <strong><a class="text-decoration-none text-dark" href="#">{{object.author.username}}</a></strong> on 
+                <small>{{object.date_posted|date:'F d ,Y'}}</small>
+                <h5 class="text-decoration-none text-dark">{{object.title}}</h5>
+                <article>{{object.content}}</article>
+            </div>
+        </article>
+    </div>
+{% endblock content %}

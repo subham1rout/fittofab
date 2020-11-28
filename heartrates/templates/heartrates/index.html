@@ -1,0 +1,81 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <!--Heartrate-->
+    <div>
+        <h3 class="text-center my-3" style="font-family: 'Oswald', sans-serif;">Heartrate Measurement</h3>
+        <div class="container text-center" style="background-color:rgb(161, 226, 161);">
+            <p class=" font-weight-bolder" style="font-size: 20px;">This shows you the maximum Heartrate according to your age<br>Lets check your Heartrate</p>
+            <form action="show_heartrate" method="POST">
+                {% csrf_token %}
+                <p class="font-weight-bold font-italic">Age: <input type="number" name="age" value="{{age}}" style="width: 60px;border-bottom: 3px solid green;"><small>years</small></p>
+                <button type="submit" class="btn btn-success button">Click here</button>
+            </form>
+            <p class="font-weight-bold font-italic p-3 d-inline-block">Max Heartrate: 
+                <p class="d-inline-block bg-white" style="width: 100px;border-bottom: 3px solid green;">{{heartrate}}</p>
+                <small>bpm</small>
+            </p>
+            <p style="padding-bottom: 20px;" class="text-monospace">You can measure your realtime Heartrate by clicking here <strong><a href="{% url 'user-hearttest' %}">Hearttest</a></strong></p>
+        </div>
+    </div>
+    <!--Services-->
+    <div class="container" id='services'>
+        <h3 class="text-center my-3" style="font-family: 'Oswald', sans-serif;">Services</h3>
+        <div class="row text-center">
+            <div class="col-sm-6 p-3">
+                <h4>HeartTest</h4>
+                <p>By using this you can measure your realtime heartrate.</p>
+                <a href="{% url 'user-hearttest' %}" class="text-decoration-none text-light p-2 servicelink">Click Here</a>
+            </div>
+            <div class="col-sm-6 p-3 border-left border-success">
+                <h4>Lessons</h4>
+                <p>By using this you can read a number of lessons oy your choice.</p>
+                <a href="{% url 'user-lessons' %}" class="text-decoration-none text-light p-2 servicelink">Click Here</a>
+            </div>
+        </div>
+    </div>
+    <!--Customers-->
+    <div class="container">
+        <h4 class="text-center mt-4 mb-3"style="font-family: 'Oswald', sans-serif;">Our Happy Customers</h4>
+        <div id='myslide' class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'blog/image/anupama.jpg' %}" class="d-block w-100" style="height: 300px; object-fit: cover;">
+                    <div class="carousel-caption">
+                        <h5>Anupama Kher</h5>
+                        <p>This is a very good experience. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, voluptas. Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'blog/image/IMG_0460.jpg' %}"class="d-block w-100" style="height: 300px; object-fit: cover;">
+                    <div class="carousel-caption">
+                        <h5>Biswajit Prasan Oram</h5>
+                        <p>This is a an excellent experience. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde, nihil?</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'blog/image/DSC_4154.jpg' %}" class="d-block w-100" style="height: 300px; object-fit: cover;">
+                    <div class="carousel-caption">
+                        <h5>Bijaya Chahuan</h5>
+                        <p>This system works well. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'blog/image/IMG_0050.JPG' %}" class="d-block w-100" style="height: 300px; object-fit: cover;">
+                    <div class="carousel-caption">
+                        <h5>Debidutta Rath</h5>
+                        <p>This is a very good experience. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, velit.</p>
+                    </div>
+                </div>
+                <a href="#myslide" class="carousel-control-prev" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Prev</span>
+                </a>
+                <a href="#myslide" class="carousel-control-next" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

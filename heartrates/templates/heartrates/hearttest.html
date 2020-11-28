@@ -1,0 +1,116 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <!--Breadcrumb-->
+    <nav aria-label="breadcrumb" class="mp-0">
+        <ul class="breadcrumb mt-0">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">Services</li>
+            <li class="breadcrumb-item active" aria-current="page">Hearttest</li>
+        </ul>
+    </nav>
+    <!-- hearttest -->
+    <div class="container mt-2">
+        <h4 class="text-center">Heart Test</h4>
+        <h5>Now You can test your heart in 3 different ways-</h5>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'blog/image/idle.jpg' %}" class="card-img-top" style="height: 200px;object-fit: cover;">
+                            <div class="card-body pt-1 text-center">
+                                <h4 class="card-title m-0">Idle Position</h4>
+                                <small class="p-0">e.g.-sitting,thinking,etc.</small><br>
+                                <label class="btn btn-success active">
+                                    <input type="radio" name="options" id="option1" checked> Select
+                                </label>                       
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'blog/image/talking1.jpeg' %}" class="card-img-top" style="height: 200px;object-fit: cover;">
+                            <div class="card-body pt-1 text-center">
+                                <h4 class="card-title m-0">Talking Position</h4>
+                                <small class="p-0">e.g.-sitting,thinking,etc.</small><br>
+                                <!--<button class="btn btn-primary">Select</button>-->
+                                <label class="btn btn-success">
+                                    <input type="radio" name="options" id="option2">Select
+                                </label>
+                            </div>
+                        </div>
+                    </div>      
+                    <div class="col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'blog/image/walking.jpg' %}" class="card-img-top" style="height: 200px;object-fit: cover;">
+                            <div class="card-body pt-1 text-center">
+                                <h4 class="card-title m-0">Walking Position</h4>
+                                <small class="p-0">e.g.-sitting,thinking,etc.</small><br>
+                                <!--<button class="btn btn-primary">Select</button>-->
+                                <label class="btn btn-success">
+                                    <input type="radio" name="options" id="option3">Select
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ form.position }}
+                {{ form.heartrate }}
+                <button class="btn btn-success enter-button m-4" type="submit">Click Here To get heartrate</button> 
+            </form>
+        </div>
+
+        <div>
+            <p>Your heartrate is : {{ heartrate }} <small>bpm</small></p>
+            <p>Your Position is : {{ position }} <small>position</small></p>
+            <div class="pb-3">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <button type="button" value="print" onclick="window.print()">
+                            <i class="fas fa-print"></i> Print Report</button>
+                        </div>
+                    <div class="col-3">
+                        <button type="button" value="print" >
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank" class="text-dark">
+                            <i class="fas fa-share">Share Report on Fb</i>
+                        </a></button>
+                    </div>
+                </div>        
+            </div>
+            <div>
+                <h3>Steps To follow</h3>
+                <h5>Step-1</h5>
+                <p>Select your current position.</p>
+                <h5>Step-2</h5>
+                <p>Connect the senser with your finger tips by closing the senser inside the two fingertips.</p>
+                <h5>Step-3</h5>
+                <p>Check your internet connectivity and make good to go.</p>
+                <h5>Step-4</h5>
+                <p>Click on 'click here to get heartrate' and get your heartrate according to your position.</p>
+            </div>
+        </div>
+    </div>
+    
+        <!--
+        </div>
+        <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="checkbox" checked> Checked
+            </label>
+        </div>     
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" checked> Active
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2"> Radio
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3"> Radio
+            </label>
+        </div>           
+        -->
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- login -->
+    <div class="container">
+        <div class="row justify-content-center custom-margin">
+            <div class="col-sm-6 col-md-5">
+            <form action="#" class="p-4">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <label for="email/username"><strong>Email/Username:</strong></label>
+                    <input type="text" class="form-control" placeholder="email/username" id="email/username">
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-key"></i>
+                    <label for="pass"><strong>Password:</strong></label>
+                    <input type="password" class="form-control" placeholder="password" id="pass">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="checkbox">
+                    <label for="checkbox" class="form-check-label">Remember me!</label>
+                    <label><a href="#" class="text-success text-decoration-none d-inline-block ml-5">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-outline-success w-100 font-weight-bold my-3 shadow">LogIn</button>
+                <div>
+                    <div class="pt-2 text-center">
+                        <p>New user? <a href="{% url 'user-register' %}" class="text-success text-decoration-none">Create an account</a></p>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
